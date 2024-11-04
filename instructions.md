@@ -356,6 +356,40 @@
     git add * && git commit -m 'adding details to the temlpate'
     ```
 
+### Step 10: View the log and revert changes
+1. Use `git log` to see the commit history.
+    ```log
+    commit 5c79de77b8dd027f97aab4c30714ecaab2da2263 (HEAD -> main)
+    Author: Ali Tafakkor <alitafakkor@gmail.com>
+    Date:   Mon Nov 4 09:33:39 2024 -0500
+
+        adding details to the temlpate
+
+    commit 4293da9a0fb8643a244aa1761bef9b2c7ae70951
+    Author: Ali Tafakkor <alitafakkor@gmail.com>
+    Date:   Mon Nov 4 09:15:02 2024 -0500
+
+        adding style to the template
+
+    commit 1c7d7edaa80dfdbeaa72905e1742337039199f6d
+    Author: Ali Tafakkor <alitafakkor@gmail.com>
+    Date:   Sun Nov 3 17:21:56 2024 -0500
+
+        adding poster image to the template
+
+    commit d5a3f69564a7a85ae4f61c61551da04b8a126d0e
+    Author: Ali Tafakkor <alitafakkor@gmail.com>
+    Date:   Sun Nov 3 15:36:33 2024 -0500
+
+        adding the template html file
+    (END)
+    ```
+
+### Step 10: Set Up a Remote Repository on GitHub
+1. Go to [GitHub](https://github.com) and create a new repository named `workshop-ad`.
+2. Copy the repository URL (HTTPS or SSH).
+
+### Step 11: 
 4. Finally, let's add the logo of Center for Brain and Mind in the footer. Insert the following to the `poster_template.html` at line 26 (right before the `</body>`).
 
     ```html
@@ -401,12 +435,6 @@
 
    > You may have noticed that it’s helpful to bundle related changes into a single commit. For example, when adding a footer, you should group the updates in both the HTML and CSS files together. This approach makes it clearer and more meaningful if you need to reverse those changes later. While it’s <u>not</u> mandatory, it’s a great practice that helps keep your work organized and your thought process structured. 
 
-### Step 10: View the log and revert changes
-1. Use `git log` to see the commit history.
-
-### Step 10: Set Up a Remote Repository on GitHub
-1. Go to [GitHub](https://github.com) and create a new repository named `workshop-ad`.
-2. Copy the repository URL (HTTPS or SSH).
 
 ### Step 8: Link and Push Your Code to GitHub
 1. Add the remote repository:
