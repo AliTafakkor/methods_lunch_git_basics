@@ -193,7 +193,7 @@
 
     no changes added to commit (use "git add" and/or "git commit -a")
     ```
-    This indicated we have a new file (that's untracked) and that the `poster_template.html` has been modified.
+    This indicates we have a new file (that's untracked) and that the `poster_template.html` has been modified.
 
 ### Step 7: See what's been changed
 1. It's often useful to find out what has been changed in a file since the last commit or between any couple of commits. Let's see the first case first. Run the following command:
@@ -237,7 +237,7 @@
    ```bash
    touch styles.css
    ```
-2. Open `styles.css` in your editor and add the following code to style your webpage:
+2. Open `styles.css` in your editor (e.g. `pico poster_template.html` or `code poster_template.html`) and add the following code to style the html page:
 
     ```css
     body {
@@ -287,7 +287,60 @@
         color: #FFFFFF;
         margin-bottom: 30px;
     }
+    ```
 
+    This will style the poster by centering the text, adding background colors, and applying basic formatting.
+
+3. We also need to link this style file to the `poster_template.html`. To do that, insert the following line at line 7 in the `poster_template.html`. 
+
+    ```html
+    <link rel="stylesheet" href="styles.css">
+    ```
+    Now, the html file should look like this:
+    ```html
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Methods Lunch Poster</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class="poster-container">
+            <h1>Methods Lunch</h1>
+            <h1>[Session Title]</h1>
+            <img src="poster_image.png" alt="[Session Specific Image]" class="poster-image">
+            <div class="details">
+                <p>[Description of the session goes here. Write about the speaker, the topic, and what will be discussed during the Methods Lunch.]</p>
+            </div>
+        </div>
+    </body>
+    </html>
+    ```
+
+4. Refresh or open the `poster_template.html` (`open poster_template.html`) to view the changes. If you're happy with it stage and commit all changes.
+    ```bash
+    git add * && git commit -m 'adding style to the temlpate'
+    ```
+
+    ![Alt text](<Screenshot 2024-11-04 at 9.11.15 AM.png>)
+
+### Step 9: Add more details
+1. Let's add more details to the template. Insert the following to the `poster_template.html` at line 17 (right after the descriptions).
+
+    ```html
+    <div class="speakers">
+        <p><strong>[First Speaker]</strong> and <strong>[Second Speaker]</strong></p>
+    </div>
+    <div class="info">
+        <p><strong>Date:</strong> [Insert Date]</p>
+        <p><strong>Time:</strong> [Insert Time]</p>
+        <p><strong>Location:</strong> [Insert Location]</p>
+    </div>
+    ```
+2. Add the corresponding styles to end of your CSS file.
+    ```css
     .info p {
         font-size: 1em;
         color: #FFFFFF;
@@ -296,7 +349,28 @@
     .info strong {
         color: #FCF05E; /* Western Gold */
     }
+    ```
 
+3. Refresh or open the `poster_template.html` (`open poster_template.html`) to view the changes. If you're happy with it stage and commit all changes.
+    ```bash
+    git add * && git commit -m 'adding details to the temlpate'
+    ```
+
+4. Finally, let's add the logo of Center for Brain and Mind in the footer. Insert the following to the `poster_template.html` at line 26 (right before the `</body>`).
+
+    ```html
+    <div class="speakers">
+        <p><strong>[First Speaker]</strong> and <strong>[Second Speaker]</strong></p>
+    </div>
+    <div class="info">
+        <p><strong>Date:</strong> [Insert Date]</p>
+        <p><strong>Time:</strong> [Insert Time]</p>
+        <p><strong>Location:</strong> [Insert Location]</p>
+    </div>
+    ```
+
+5. Add the corresponding styles to end of your CSS file.
+    ```css
     footer {
         max-width: 80%;
         max-height: 10%;
@@ -313,25 +387,24 @@
     }
     ```
 
-This will style the webpage by centering the text, adding background colors, and applying basic formatting.
+6. Download [this logo](https://www.uwo.ca/bmi/img/homepage/Western-Logos-Centre-for-Brain-and-Mind-Detailed-Horizontal-Positive-RGB.png) for Center for Brain and Mind. And, rename it to `cbm_logo.png`.
+    ```bash
+    curl https://www.uwo.ca/bmi/img/homepage/Western-Logos-Centre-for-Brain-and-Mind-Detailed-Horizontal-Positive-RGB.png -o cbm_logo.png
+    ```
 
-### Step 6: Stage and Commit the Files
-1. Stage the newly added files:
-   ```bash
-   git add index.html styles.css workshop.jpg
-   ```
-   
-2. Check the status of your repository to see the staged files:
-   ```bash
-   git status
-   ```
+7. Refresh or open the `poster_template.html` (`open poster_template.html`) to view the changes. If you're happy with it stage and commit all changes.
+    ```bash
+    git add * && git commit -m 'adding CBM logo in the footer'
+    ```
 
-3. Commit the changes:
-   ```bash
-   git commit -m "Add initial HTML, CSS, and image files for the workshop page"
-   ```
+    ![Alt text](<Screenshot 2024-11-04 at 9.41.49 AM.png>)
 
-### Step 7: Set Up a Remote Repository on GitHub
+   > You may have noticed that it’s helpful to bundle related changes into a single commit. For example, when adding a footer, you should group the updates in both the HTML and CSS files together. This approach makes it clearer and more meaningful if you need to reverse those changes later. While it’s <u>not</u> mandatory, it’s a great practice that helps keep your work organized and your thought process structured. 
+
+### Step 10: View the log and revert changes
+1. Use `git log` to see the commit history.
+
+### Step 10: Set Up a Remote Repository on GitHub
 1. Go to [GitHub](https://github.com) and create a new repository named `workshop-ad`.
 2. Copy the repository URL (HTTPS or SSH).
 
