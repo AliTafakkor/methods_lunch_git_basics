@@ -9,7 +9,7 @@
 
 ## Instructions:
 
-> 🚧 The following instructions assume you have git installed on your device, if not please install git before you start.
+> 🚧 The following instructions assume you have git installed on your device, if not please install and configure git before you start.
 
 ### Step 1: Set up the project directory
 1. Open your terminal.
@@ -561,26 +561,21 @@ git checkout 4293da9a0fb8643a244aa1761bef9b2c7ae70951
 
 9. Try pushing the local commit history again:
     ```bash
-    git push origin main
+    git push --set-upstream origin main
     ```
 
-    Now, you can see the local and remote repositories are synched, the upstream for main has been set, and you can see all files on the remote repository.
+    Now, you can see the local and remote repositories are synched (use `git log` to verify), the upstream for main has been set, and you can see all files on the remote repository.
 
-### Step 11: 
-4. Finally, let's add the logo of Center for Brain and Mind in the footer. Insert the following to the `poster_template.html` at line 26 (right before the `</body>`).
+### Step 11: gitignore and the last push
+1. Let's add the logo of Center for Brain and Mind in the footer. Insert the following to the `poster_template.html` at line 26 (right before the `</body>`).
 
     ```html
-    <div class="speakers">
-        <p><strong>[First Speaker]</strong> and <strong>[Second Speaker]</strong></p>
-    </div>
-    <div class="info">
-        <p><strong>Date:</strong> [Insert Date]</p>
-        <p><strong>Time:</strong> [Insert Time]</p>
-        <p><strong>Location:</strong> [Insert Location]</p>
-    </div>
+    <footer>
+        <img src="cbm_logo.png" alt="Western Centre for Brain and Mind Logo" class="poster-logo">
+    </footer>
     ```
 
-5. Add the corresponding styles to end of your CSS file.
+2. Add the corresponding styles to end of your CSS file.
     ```css
     footer {
         max-width: 80%;
@@ -598,13 +593,26 @@ git checkout 4293da9a0fb8643a244aa1761bef9b2c7ae70951
     }
     ```
 
-
-6. Download [this logo](https://www.uwo.ca/bmi/img/homepage/Western-Logos-Centre-for-Brain-and-Mind-Detailed-Horizontal-Positive-RGB.png) for Center for Brain and Mind. And, rename it to `cbm_logo.png`.
+3. Download [this logo](https://www.uwo.ca/bmi/img/homepage/Western-Logos-Centre-for-Brain-and-Mind-Detailed-Horizontal-Positive-RGB.png) for Center for Brain and Mind. And, rename it to `cbm_logo.png`.
     ```bash
     curl https://www.uwo.ca/bmi/img/homepage/Western-Logos-Centre-for-Brain-and-Mind-Detailed-Horizontal-Positive-RGB.png -o cbm_logo.png
     ```
 
-7. Refresh or open the `poster_template.html` (`open poster_template.html`) to view the changes. If you're happy with it stage and commit all changes.
+4. Run `git status`, and you’ll notice an untracked file named `diff.txt`, along with other files that we care about tracking. In many projects, there are files we don’t want to track or be notified about when they change, such as temporary files, build artifacts, or sensitive information. This is where `.gitignore` becomes useful.
+
+5. Create a `.gitignore` file in your repository (if you don’t have one already):
+    ```bash
+    touch .gitignore
+    ```
+    This will keep a list of files or filename patterns to ignore.
+
+6. Open the `.gitignore` file and add the names or patterns of files you want to ignore. For example, to ignore `diff.txt`, do:
+    ```bash
+    echo 'diff.txt' >> .gitignore
+    ```
+7. Run `git status`, again. Now, `diff.txt` should no longer appear as an untracked file. 
+
+8. Refresh or open the `poster_template.html` (`open poster_template.html`) to view the changes. If you're happy with it stage and commit all changes.
     ```bash
     git add * && git commit -m 'adding CBM logo in the footer'
     ```
@@ -613,27 +621,17 @@ git checkout 4293da9a0fb8643a244aa1761bef9b2c7ae70951
 
    > You may have noticed that it’s helpful to bundle related changes into a single commit. For example, when adding a footer, you should group the updates in both the HTML and CSS files together. This approach makes it clearer and more meaningful if you need to reverse those changes later. While it’s <u>not</u> mandatory, it’s a great practice that helps keep your work organized and your thought process structured. 
 
+9. Finally, push everything to the remote repository.
+    ```bash
+    git push
+    ```
 
-### Step 8: Link and Push Your Code to GitHub
-1. Add the remote repository:
-   ```bash
-   git remote add origin <repository-url>
-   ```
-2. Push your local changes to GitHub:
-   ```bash
-   git push -u origin main
-   ```
+    > It’s a good habit to always pull before pushing, unless you’re absolutely certain that no one else has made changes to the remote repository. This practice ensures your local branch is up to date and helps prevent potential merge conflicts.
+    >```bash
+    >git pull && git push
+    >```
 
-### Step 9: Test Your Web Page
-1. Open `index.html` in your browser by double-clicking it or running it on a local server.
-2. Verify that the page displays the workshop image, the title, and the details.
+10. Now, if you try `git pull` or `git push`, Git will inform you that everything (all commits) is up to date.
 
 ---
-
-### Recap:
-Participants will create:
-- **An HTML file (`index.html`)** to advertise the next workshop.
-- **A CSS file (`styles.css`)** to style the webpage.
-- **An image file (`workshop.jpg`)** to demonstrate that Git can handle binary files like images.
-
-This exercise will showcase how Git works for text and binary files while giving participants hands-on experience with basic Git operations (initializing, staging, committing, pushing).
+Congratulations! **You’ve learned Git!** 🎉 In the next session, we’ll discuss branching, where you’ll discover how to manage and organize your work on different features or fixes without impacting the main project timeline. Keep practicing, and you’ll soon master version control!
